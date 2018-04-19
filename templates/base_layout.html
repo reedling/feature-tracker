@@ -14,9 +14,12 @@
   {% block content %}
   {% endblock %}
 
-  <footer class="footer">
-    <p><a class="text-muted footer-link" href="#" role="button">Return to top of page</a></p>
-  </footer>
+
+  {%block footer %}
+    <footer class="footer">
+      <p><a class="text-muted footer-link" href="#" role="button">Return to top of page</a></p>
+    </footer>
+  {% endblock %}
 
 </div> <!-- /container -->
 {% endblock %}

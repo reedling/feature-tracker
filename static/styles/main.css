@@ -3,7 +3,7 @@ body {
   padding-bottom: 20px;
 }
 
-.header, .feature-board, .footer {
+.header, .feature-board, .feature-form, .footer {
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -51,7 +51,7 @@ body {
   }
 }
 
-.feature-board {
+.feature-board, .feature-form {
   margin: 40px 0;
 }
 .feature-board p + h4 {
@@ -77,7 +77,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  .header, .feature-board, .footer {
+  .header, .feature-board, .feature-form, .footer {
     padding-right: 0;
     padding-left: 0;
   }
