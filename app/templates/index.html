@@ -16,12 +16,21 @@
   {% for fr in feature_reqs %}
     <div class="col-md-4 feature-board-item-container">
       <div class="feature-board-item">
-        <div class ="title-container">
+        <div class="title-container">
           <h4>{{ fr.title }}</h4>
         </div>
-        <p>For: {{ fr.client }}</p>
-        <p>Priority: {{ fr.priority }}</p>
-        <p>Target Date: {{ fr.due }}</p>
+        <div class="row">
+          <p class="col-md-5">Client:</p>
+          <p class="col-md-7">{{ fr.client }}</p>
+        </div>
+        <div class="row">
+          <p class="col-md-5">Priority:</p>
+          <p class="col-md-7">{{ fr.priority }}</p>
+        </div>
+        <div class="row">
+          <p class="col-md-5">Target:</p>
+          <p class="col-md-7">{{ fr.due }}</p>
+        </div>
       </div>
     </div>
   {% endfor %}
