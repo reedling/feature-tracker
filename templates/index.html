@@ -16,7 +16,9 @@
   {% for fr in feature_reqs %}
     <div class="col-md-4 feature-board-item-container">
       <div class="feature-board-item">
-        <h4>{{ fr.title }}</h4>
+        <div class ="title-container">
+          <h4>{{ fr.title }}</h4>
+        </div>
         <p>For: {{ fr.client }}</p>
         <p>Priority: {{ fr.priority }}</p>
         <p>Target Date: {{ fr.due }}</p>
