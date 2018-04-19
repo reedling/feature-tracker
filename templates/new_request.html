@@ -2,18 +2,13 @@
 
 {% block navbar %}
 <div class="header clearfix">
-  <nav>
-    <div class="nav pull-right">
-      <p><a class="btn btn-lg btn-create" href="{{ url_for('new_request') }}" role="button">New Feature Request</a></p>
-    </div>
-  </nav>
-  <h3 class="text-muted">Feature Tracker</h3>
+  <h3 class="text-muted">New Feature Request</h3>
 </div>
 {% endblock %}
 
 {% block content %}
-<div class="row feature-board">
-  {% for fr in feature_reqs %}
+<div class="row feature-form">
+  <!-- {% for fr in feature_reqs %}
     <div class="col-md-4 feature-board-item-container">
       <div class="feature-board-item">
         <h4>{{ fr.title }}</h4>
@@ -22,6 +17,6 @@
         <p>Target Date: {{ fr.due }}</p>
       </div>
     </div>
-  {% endfor %}
+  {% endfor %} -->
 </div>
 {% endblock %}

@@ -46,5 +46,10 @@ def index():
                            ))
 
 
+@app.route('/new-request')
+def new_request():
+    return render_template('new_request.html')
+
+
 if __name__ == '__main__':
     app.run()
