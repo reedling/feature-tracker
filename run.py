@@ -9,7 +9,7 @@ from app import create_app, db
 from app.models import Feature
 
 
-flask_app = create_app()
+flask_app = create_app('prod')
 
 
 @flask_app.route('/')

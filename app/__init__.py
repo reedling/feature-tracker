@@ -10,9 +10,9 @@ bootstrap = Bootstrap()
 db = SQLAlchemy()
 
 
-def create_app():
+def create_app(env='dev'):
     flask_app = Flask(__name__)
-    config = os.path.join(os.getcwd(), 'config', 'config.py')
+    config = os.path.join(os.getcwd(), 'config', env + '.py')
     flask_app.config.from_pyfile(config)
     db.init_app(flask_app)
     bootstrap.init_app(flask_app)
