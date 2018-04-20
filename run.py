@@ -8,8 +8,7 @@ from sqlalchemy import exc
 from app import create_app, db
 from app.models import Feature
 
-
-flask_app = create_app('prod')
+flask_app = create_app(os.environ['ENV'] if 'ENV' in os.environ else 'dev')
 
 
 @flask_app.before_first_request

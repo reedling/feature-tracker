@@ -1,1 +1,1 @@
-web: gunicorn wsgi
+web: ENV=prod gunicorn wsgi
