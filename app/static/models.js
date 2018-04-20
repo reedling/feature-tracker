@@ -1,8 +1,5 @@
 function Feature(title, desc, client, priority, target_date, area, id) {
     var self = this;
-    self.clients = clients;
-    self.product_areas = product_areas;
-
     self.title = title;
     self.desc = desc;
     self.client = client;
