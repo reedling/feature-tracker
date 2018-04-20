@@ -53,6 +53,8 @@ def submit_request():
             flash('Feature request submitted.\nThanks for your input!')
         except exc.IntegrityError:
             flash('Failed to submit feature request.', 'error')
+        except exc.DataError:
+            flash('Invalid data submitted for feature request.', 'error')
     return redirect(url_for('index'))
 
 
