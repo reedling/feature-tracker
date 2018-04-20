@@ -8,23 +8,23 @@
 
 {% block content %}
 <div class="row feature-form">
-  <form>
+  <form action="{{ url_for('submit_request') }}" method="POST">
     <div class="form-group row">
       <label for="title-input" class="col-md-2 col-form-label">Title</label>
       <div class="col-md-10">
-        <input class="form-control" type="text" id="title-input" placeholder="A short, descriptive name">
+        <input class="form-control" type="text" id="title-input" name="title" placeholder="A short, descriptive name">
       </div>
     </div>
     <div class="form-group row">
-      <label for="featureDesc" class="col-md-2 col-form-label">Description</label>
+      <label for="feature-desc-textarea" class="col-md-2 col-form-label">Description</label>
       <div class="col-md-10">
-        <textarea class="form-control" id="featureDesc" rows="4" placeholder="Include all the details you have here."></textarea>
+        <textarea class="form-control" id="feature-desc-textarea" name="desc" rows="4" placeholder="Include all the details you have here."></textarea>
       </div>
     </div>
     <div class="form-group row">
-      <label for="clientSelect" class="col-md-2 col-form-label">Client</label>
+      <label for="client-select" class="col-md-2 col-form-label">Client</label>
       <div class="col-md-10">
-        <select class="form-control" id="clientSelect">
+        <select class="form-control" id="client-select" name="client">
           <option>Client A</option>
           <option>Client B</option>
           <option>Client C</option>
@@ -32,21 +32,21 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="priorityInput" class="col-md-2 col-form-label">Priority</label>
+      <label for="priority-input" class="col-md-2 col-form-label">Priority</label>
       <div class="col-md-10">
-        <input type="number" id="priorityInput" min="1" step="1"/>
+        <input type="number" id="priority-input" name="priority" min="1" step="1"/>
       </div>
     </div>
     <div class="form-group row">
-      <label for="targetDate" class="col-md-2 col-form-label">Target Date</label>
+      <label for="target-date" class="col-md-2 col-form-label">Target Date</label>
       <div class="col-md-10">
-        <input class="form-control" type="date" value="2011-08-19" id="targetDate">
+        <input class="form-control" type="date" value="2011-08-19" id="target-date" name="target">
       </div>
     </div>
     <div class="form-group row">
-      <label for="areaSelect" class="col-md-2 col-form-label">Product Area</label>
+      <label for="area-select" class="col-md-2 col-form-label">Product Area</label>
       <div class="col-md-10">
-        <select class="form-control" id="areaSelect">
+        <select class="form-control" id="area-select" name="area">
           <option>Policies</option>
           <option>Billing</option>
           <option>Claims</option>

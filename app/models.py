@@ -5,6 +5,9 @@ from app import db
 
 class Feature(db.Model):
     __tablename__ = 'feature'
+    __table_args__ = (
+        db.UniqueConstraint('client', 'priority', name='_client_priority_uc'),
+    )
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
@@ -16,7 +19,7 @@ class Feature(db.Model):
 
     @property
     def due_stamp(self):
-        return datetime.strptime(self.target_date, '%d-%m-%Y').timestamp()
+        return datetime.strptime(self.target_date, '%Y-%m-%d').timestamp()
 
     def __str__(self):
         return '{} -- {}'.format(self.title, self.client)
