@@ -12,6 +12,12 @@ from app.models import Feature
 flask_app = create_app('prod')
 
 
+@flask_app.before_first_request
+def initialize():
+    with flask_app.app_context():
+        db.create_all()
+
+
 @flask_app.route('/')
 def index():
     features = []
