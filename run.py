@@ -42,11 +42,14 @@ def requests():
                       )])
 
 
+@flask_app.route('/request-counts')
+def request_counts():
+    return jsonify(get_request_counts_by_client())
+
+
 @flask_app.route('/new-request')
 def new_request():
-    return render_template('new_request.html',
-                           counts_by_client=get_request_counts_by_client(),
-                           curr_date=get_current_date())
+    return render_template('new_request.html')
 
 
 @flask_app.route('/submit-request', methods=['POST'])
@@ -96,7 +99,4 @@ def get_request_counts_by_client():
         if f.client not in counts:
             counts[f.client] = 0
         counts[f.client] += 1
-
-
-def get_current_date():
-    return datetime.today().strftime('%Y-%m-%d')
+    return counts

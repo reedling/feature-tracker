@@ -9,12 +9,12 @@ class Feature(db.Model):
         db.UniqueConstraint('client', 'priority', name='_client_priority_uc'),
     )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text)
     client = db.Column(db.String(8), nullable=False)
     priority = db.Column(db.Integer, nullable=False)
-    target_date = db.Column(db.String(10))
+    target_date = db.Column(db.String(10), nullable=False)
     product_area = db.Column(db.String(8), nullable=False)
 
     @property

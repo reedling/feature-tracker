@@ -12,19 +12,19 @@
     <div class="form-group row">
       <label for="title-input" class="col-md-2 col-form-label">Title</label>
       <div class="col-md-10">
-        <input class="form-control" type="text" id="title-input" name="title" placeholder="A short, descriptive name">
+        <input class="form-control" type="text" id="title-input" name="title" placeholder="A short, descriptive name" data-bind="value: title">
       </div>
     </div>
     <div class="form-group row">
       <label for="feature-desc-textarea" class="col-md-2 col-form-label">Description</label>
       <div class="col-md-10">
-        <textarea class="form-control" id="feature-desc-textarea" name="desc" rows="4" placeholder="Include all the details you have here."></textarea>
+        <textarea class="form-control" id="feature-desc-textarea" name="desc" rows="4" placeholder="Include all the details you have here." data-bind="value: desc"></textarea>
       </div>
     </div>
     <div class="form-group row">
       <label for="client-select" class="col-md-2 col-form-label">Client</label>
       <div class="col-md-10">
-        <select class="form-control" id="client-select" name="client">
+        <select class="form-control" id="client-select" name="client" data-bind="value: client">
           <option selected disabled hidden></option>
           <option>Client A</option>
           <option>Client B</option>
@@ -33,21 +33,23 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="priority-input" class="col-md-2 col-form-label">Priority</label>
+      <label for="priority-select" class="col-md-2 col-form-label">Priority</label>
       <div class="col-md-10">
-        <input type="number" id="priority-input" name="priority" min="1" step="1"/>
+        <select class="form-control" id="priority-select" name="priority" data-bind="value: priority, disable: disablePriority, options: priorityOptions, optionsCaption: ''">
+          <!-- <option selected disabled hidden></option> -->
+        </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="target-date" class="col-md-2 col-form-label">Target Date</label>
       <div class="col-md-10">
-        <input class="form-control" type="date" value="{{ curr_date }}" id="target-date" name="target">
+        <input class="form-control" type="date" id="target-date" name="target" data-bind="value: target_date">
       </div>
     </div>
     <div class="form-group row">
       <label for="area-select" class="col-md-2 col-form-label">Product Area</label>
       <div class="col-md-10">
-        <select class="form-control" id="area-select" name="area">
+        <select class="form-control" id="area-select" name="area" data-bind="value: area">
           <option selected disabled hidden></option>
           <option>Policies</option>
           <option>Billing</option>
