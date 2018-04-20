@@ -25,6 +25,7 @@
       <label for="client-select" class="col-md-2 col-form-label">Client</label>
       <div class="col-md-10">
         <select class="form-control" id="client-select" name="client">
+          <option selected disabled hidden></option>
           <option>Client A</option>
           <option>Client B</option>
           <option>Client C</option>
@@ -40,13 +41,14 @@
     <div class="form-group row">
       <label for="target-date" class="col-md-2 col-form-label">Target Date</label>
       <div class="col-md-10">
-        <input class="form-control" type="date" value="2011-08-19" id="target-date" name="target">
+        <input class="form-control" type="date" value="{{ curr_date }}" id="target-date" name="target">
       </div>
     </div>
     <div class="form-group row">
       <label for="area-select" class="col-md-2 col-form-label">Product Area</label>
       <div class="col-md-10">
         <select class="form-control" id="area-select" name="area">
+          <option selected disabled hidden></option>
           <option>Policies</option>
           <option>Billing</option>
           <option>Claims</option>

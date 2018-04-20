@@ -1,3 +1,4 @@
+from datetime import datetime
 from operator import attrgetter
 import os
 
@@ -9,6 +10,9 @@ from app import create_app, db
 from app.models import Feature
 
 flask_app = create_app(os.environ['ENV'] if 'ENV' in os.environ else 'dev')
+
+
+# Routes #
 
 
 @flask_app.before_first_request
@@ -23,12 +27,8 @@ def index():
 
 
 @flask_app.route('/requests')
-def all_requests():
-    features = []
-    try:
-        features = Feature.query.all()
-    except exc.ProgrammingError:
-        print('No features to display yet')
+def requests():
+    features = get_all_requests()
     return jsonify([{
         "title": f.title,
         "desc": f.description,
@@ -44,7 +44,9 @@ def all_requests():
 
 @flask_app.route('/new-request')
 def new_request():
-    return render_template('new_request.html')
+    return render_template('new_request.html',
+                           counts_by_client=get_request_counts_by_client(),
+                           curr_date=get_current_date())
 
 
 @flask_app.route('/submit-request', methods=['POST'])
@@ -74,3 +76,27 @@ def favicon():
     return send_from_directory(os.path.join(flask_app.root_path, 'static'),
                                'favicon.ico',
                                mimetype='image/vnd.microsoft.icon')
+
+
+# Helpers #
+
+
+def get_all_requests():
+    features = []
+    try:
+        features = Feature.query.all()
+    except exc.ProgrammingError:
+        print('No features to display yet')
+    return features
+
+
+def get_request_counts_by_client():
+    counts = {}
+    for f in get_all_requests():
+        if f.client not in counts:
+            counts[f.client] = 0
+        counts[f.client] += 1
+
+
+def get_current_date():
+    return datetime.today().strftime('%Y-%m-%d')
