@@ -14,9 +14,14 @@ flask_app = create_app('prod')
 
 @flask_app.route('/')
 def index():
+    features = []
+    try:
+        features = Feature.query.all()
+    except exc.ProgrammingError:
+        print('No features to display yet')
     return render_template('index.html',
                            feature_reqs=sorted(
-                               Feature.query.all(),
+                               features,
                                key=attrgetter('priority', 'due_stamp', 'title')
                            ))
 
