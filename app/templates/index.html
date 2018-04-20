@@ -26,6 +26,11 @@
   {% endif %}
 {% endwith %}
 <div class="row feature-board">
+  {% if feature_reqs|length == 0 %}
+    <div class="col-md-12">
+      <h4 class="text-muted nothing">Nothing to display</h3>
+    </div>
+  {% endif %}
   {% for fr in feature_reqs %}
     <div class="col-md-4 feature-board-item-container">
       <div class="feature-board-item">

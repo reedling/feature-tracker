@@ -105,6 +105,11 @@ body {
   padding-top: 5px;
 }
 
+.text-muted.nothing {
+  text-align: center;
+  color: #bdbdbd;
+}
+
 @media screen and (min-width: 768px) {
   .header, .feature-board, .feature-form, .footer {
     padding-right: 0;
