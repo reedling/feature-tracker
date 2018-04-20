@@ -11,6 +11,7 @@ flask = "*"
 flask-bootstrap = "*"
 gunicorn = "*"
 flask-sqlalchemy = "*"
+"psycopg2" = "*"
 
 
 [dev-packages]

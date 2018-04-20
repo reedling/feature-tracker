@@ -101,6 +101,10 @@ body {
   font-weight: 500;
 }
 
+.col-form-label {
+  padding-top: 5px;
+}
+
 @media screen and (min-width: 768px) {
   .header, .feature-board, .feature-form, .footer {
     padding-right: 0;

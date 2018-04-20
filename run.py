@@ -11,12 +11,48 @@ flask_app = create_app()
 
 # fake features for now
 fake_feature_reqs = [
-    Feature('Buy more hand soap', 'Someone used all the hand soap.', 'Client A', 1, '05-06-2018', 'Claims'),
-    Feature('Charge for hand soap', 'They can\'t keep getting away with this.', 'Client A', 3, '04-06-2018', 'Billing'),
-    Feature('TPS report', 'Thatd be great.', 'Client B', 1, '02-05-2018', 'Reports'),
-    Feature('Simplify soap pipeline', 'It is a real hassle to get more hand soap when we run out.', 'Client A', 2, '05-06-2018', 'Policies'),
-    Feature('Make this website', 'OMG.', 'Client C', 1, '23-04-2018', 'Claims'),
-    Feature('The HTML/CSS is pretty much good to go!', 'Now we need to add KnockoutJS, SQLAlchemy, etc.', 'Client C', 2, '23-04-2018', 'Claims')
+    Feature(
+        title='Buy more hand soap',
+        description='Someone used all the hand soap.',
+        client='Client A',
+        priority=1,
+        target_date='05-06-2018',
+        product_area='Claims'),
+    Feature(
+        title='Charge for hand soap',
+        description='They can\'t keep getting away with this.',
+        client='Client A',
+        priority=3,
+        target_date='04-06-2018',
+        product_area='Billing'),
+    Feature(
+        title='TPS report',
+        description='Thatd be great.',
+        client='Client B',
+        priority=1,
+        target_date='02-05-2018',
+        product_area='Reports'),
+    Feature(
+        title='Simplify soap pipeline',
+        description='It is a real hassle to get more hand soap when we run out.',
+        client='Client A',
+        priority=2,
+        target_date='05-06-2018',
+        product_area='Policies'),
+    Feature(
+        title='Make this website',
+        description='OMG.',
+        client='Client C',
+        priority=1,
+        target_date='23-04-2018',
+        product_area='Claims'),
+    Feature(
+        title='The HTML/CSS is pretty much good to go!',
+        description='Now we need to add KnockoutJS, SQLAlchemy, etc.',
+        client='Client C',
+        priority=2,
+        target_date='23-04-2018',
+        product_area='Claims')
 ]
 
 
