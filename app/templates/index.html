@@ -25,32 +25,33 @@
     </div>
   {% endif %}
 {% endwith %}
-<div class="row feature-board">
-  {% if feature_reqs|length == 0 %}
-    <div class="col-md-12">
-      <h4 class="text-muted nothing">Nothing to display</h3>
-    </div>
-  {% endif %}
-  {% for fr in feature_reqs %}
+<div class="row feature-board" id="feature-board">
+  <div class="col-md-12" data-bind="visible: features().length === 0">
+    <h4 class="text-muted nothing">Nothing to display</h3>
+  </div>
+  <!-- ko foreach: features -->
     <div class="col-md-4 feature-board-item-container">
       <div class="feature-board-item">
         <div class="title-container">
-          <h4>{{ fr.title }}</h4>
+          <h4 data-bind="text: title"></h4>
         </div>
         <div class="row">
           <p class="col-md-5">Client:</p>
-          <p class="col-md-7">{{ fr.client }}</p>
+          <p class="col-md-7" data-bind="text: client"></p>
         </div>
         <div class="row">
           <p class="col-md-5">Priority:</p>
-          <p class="col-md-7">{{ fr.priority }}</p>
+          <p class="col-md-7" data-bind="text: priority"></p>
         </div>
         <div class="row">
           <p class="col-md-5">Target:</p>
-          <p class="col-md-7">{{ fr.target_date }}</p>
+          <p class="col-md-7" data-bind="text: target_date"></p>
         </div>
       </div>
     </div>
-  {% endfor %}
+  <!-- /ko -->
 </div>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script src="{{url_for('static', filename='models.js')}}"></script>
 {% endblock %}

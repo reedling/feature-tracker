@@ -1,7 +1,7 @@
 from operator import attrgetter
 import os
 
-from flask import (flash, redirect, render_template, request,
+from flask import (flash, jsonify, redirect, render_template, request,
                    send_from_directory, url_for)
 from sqlalchemy import exc
 
@@ -19,16 +19,27 @@ def initialize():
 
 @flask_app.route('/')
 def index():
+    return render_template('index.html')
+
+
+@flask_app.route('/requests')
+def all_requests():
     features = []
     try:
         features = Feature.query.all()
     except exc.ProgrammingError:
         print('No features to display yet')
-    return render_template('index.html',
-                           feature_reqs=sorted(
-                               features,
-                               key=attrgetter('priority', 'due_stamp', 'title')
-                           ))
+    return jsonify([{
+        "title": f.title,
+        "desc": f.description,
+        "client": f.client,
+        "priority": f.priority,
+        "target_date": f.target_date,
+        "area": f.product_area,
+        "id": f.id
+    } for f in sorted(features,
+                      key=attrgetter('priority', 'due_stamp', 'title')
+                      )])
 
 
 @flask_app.route('/new-request')
