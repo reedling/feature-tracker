@@ -4,7 +4,7 @@ import os
 
 from flask import (flash, jsonify, redirect, render_template, request,
                    send_from_directory, url_for)
-from sqlalchemy import exc
+from sqlalchemy import cast, exc, Integer
 
 from app import create_app, db
 from app.models import Feature
@@ -52,7 +52,7 @@ def new_request():
     return render_template('new_request.html')
 
 
-@flask_app.route('/submit-request', methods=['POST'])
+@flask_app.route('/submit-request', methods=['GET', 'POST'])
 def submit_request():
     if request.method == 'POST':
         new_feature = Feature(
@@ -63,14 +63,8 @@ def submit_request():
             target_date=request.form['target'],
             product_area=request.form['area']
         )
-        db.session.add(new_feature)
-        try:
-            db.session.commit()
-            flash('Feature request submitted.\nThanks for your input!')
-        except exc.IntegrityError:
-            flash('Failed to submit feature request.', 'error')
-        except exc.DataError:
-            flash('Invalid data submitted for feature request.', 'error')
+        message, failed = increment_priorities_to_make_room(new_feature)
+        flash(message, 'error' if failed else 'message')
     return redirect(url_for('index'))
 
 
@@ -100,3 +94,30 @@ def get_request_counts_by_client():
             counts[f.client] = 0
         counts[f.client] += 1
     return counts
+
+
+def increment_priorities_to_make_room(new_f):
+    to_increment = Feature.query.filter(
+        Feature.client == new_f.client,
+        Feature.priority >= new_f.priority
+    ).all()
+    for f in to_increment:
+        f.priority = str(int(f.priority) + 1)
+    db.session.add(new_f)
+    try:
+        db.session.commit()
+        message = 'Feature request submitted.'
+        incremented = len(to_increment)
+        if incremented > 0:
+            message += '  (Incremented priorit{} for {} other{}.)'.format(
+                'ies' if incremented > 1 else 'y',
+                incremented,
+                's' if incremented > 1 else ''
+            )
+        return message, False
+    except exc.IntegrityError as ie:
+        print(ie)
+        return 'Failed to submit feature request.', True
+    except exc.DataError as de:
+        print(de)
+        return 'Invalid data submitted for feature request.', True
