@@ -47,6 +47,22 @@ def request_counts():
     return jsonify(get_request_counts_by_client())
 
 
+@flask_app.route('/view-request')
+def view_request_no_param():
+    return redirect(url_for('index'))
+
+
+@flask_app.route('/view-request/<feature_id>')
+def view_request(feature_id):
+    f = get_request_by_id(feature_id)
+    if f is None:
+        flash('No feature request found with that id: {}'.format(feature_id),
+              'warning')
+        return redirect(url_for('index'))
+    else:
+        return render_template('view_request.html', feature=f)
+
+
 @flask_app.route('/new-request')
 def new_request():
     return render_template('new_request.html')
@@ -85,6 +101,10 @@ def get_all_requests():
     except exc.ProgrammingError:
         print('No features to display yet')
     return features
+
+
+def get_request_by_id(request_id):
+    return Feature.query.filter_by(id=request_id).first()
 
 
 def get_request_counts_by_client():

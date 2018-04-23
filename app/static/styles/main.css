@@ -3,7 +3,7 @@ body {
   padding-bottom: 20px;
 }
 
-.header, .feature-board, .feature-form, .footer, .alert-container {
+.header, .feature-board, .feature-form, .feature-view, .footer, .alert-container {
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -51,11 +51,12 @@ body {
   }
 }
 
-.feature-board, .feature-form {
+.feature-board, .feature-form, .feature-view {
   margin: 40px 0;
 }
-.feature-board p + h4 {
-  margin-top: 28px;
+
+.alert-container + .feature-board {
+  margin: 10px 0 40px;
 }
 
 .feature-board-item-container {
@@ -68,6 +69,7 @@ body {
   background: #fff5de
 }
 .feature-board-item {
+  display: block;
   padding: 15px 10px;
 }
 .feature-board-item:hover, .feature-board-item:active {
@@ -128,7 +130,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  .header, .feature-board, .feature-form, .footer, .alert-container {
+  .header, .feature-board, .feature-form, .feature-view, .footer, .alert-container {
     padding-right: 0;
     padding-left: 0;
   }

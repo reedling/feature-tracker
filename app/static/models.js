@@ -1,10 +1,10 @@
-clients = [
+var clients = [
     'Client A',
     'Client B',
     'Client C'
 ];
 
-areas = [
+var areas = [
     'Policies',
     'Billing',
     'Claims',
@@ -101,9 +101,12 @@ function FeatureBoardViewModel() {
     });
 }
 
-element = document.getElementById('feature-board');
+var element = document.getElementById('feature-board');
 if (element === null) {
-    ko.applyBindings(new Feature(), document.getElementById('feature-form'));
+    element = document.getElementById('feature-form');
+    if (element !== null) {
+        ko.applyBindings(new Feature(), element);
+    }
 } else {
     ko.applyBindings(new FeatureBoardViewModel(), element);
 }

@@ -21,6 +21,8 @@
           <div class="alert alert-success"><strong>Success!</strong> {{ message }}</div>
         {% elif category == 'error' %}
           <div class="alert alert-danger"><strong>Whoops!</strong> {{ message }}</div>
+        {% elif category == 'warning' %}
+          <div class="alert alert-warning"><strong>Hmmm...</strong> {{ message }}</div>
         {% endif %}
       {% endfor %}
     </div>
@@ -35,23 +37,25 @@
   </div>
   <!-- ko foreach: features -->
     <div class="col-sm-4 feature-board-item-container" data-bind="visible: done()">
-      <div class="feature-board-item">
-        <div class="title-container">
-          <h4 data-bind="text: title"></h4>
-        </div>
-        <div class="row">
-          <p class="col-xs-5">Client:</p>
-          <p class="col-xs-7" data-bind="text: client"></p>
-        </div>
-        <div class="row">
-          <p class="col-xs-5">Priority:</p>
-          <p class="col-xs-7" data-bind="text: priority"></p>
-        </div>
-        <div class="row">
-          <p class="col-xs-5">Target:</p>
-          <p class="col-xs-7" data-bind="text: target_date"></p>
-        </div>
-      </div>
+      <a data-bind="attr: { href: '{{ url_for('view_request_no_param') }}' + '/' + id }">
+        <span class="feature-board-item">
+          <div class="title-container">
+            <h4 data-bind="text: title"></h4>
+          </div>
+          <div class="row">
+            <p class="col-xs-5">Client:</p>
+            <p class="col-xs-7" data-bind="text: client"></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-5">Priority:</p>
+            <p class="col-xs-7" data-bind="text: priority"></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-5">Target:</p>
+            <p class="col-xs-7" data-bind="text: target_date"></p>
+          </div>
+        </span>
+      </a>
     </div>
   <!-- /ko -->
 </div>

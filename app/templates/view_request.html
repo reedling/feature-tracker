@@ -1,0 +1,54 @@
+{% extends "new_request.html" %}
+
+{% block navbar %}
+<div class="header clearfix">
+  <h3 class="text-muted">View Feature Request</h3>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row feature-view">
+  <div class="row">
+    <label for="title-view" class="col-md-2 col-form-label">Title</label>
+    <div class="col-md-10">
+      <p id="title-view">{{ feature.title }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <label for="feature-desc-textarea" class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-10">
+      <textarea class="form-control" id="feature-desc-textarea" name="desc" rows="6" disabled>{{ feature.description }}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <label for="client-view" class="col-md-2 col-form-label">Client</label>
+    <div class="col-md-10">
+      <p id="client-view">{{ feature.client }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <label for="priority-view" class="col-md-2 col-form-label">Priority</label>
+    <div class="col-md-10">
+      <p id="priority-view">{{ feature.priority }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <label for="target-date-view" class="col-md-2 col-form-label">Target Date</label>
+    <div class="col-md-10">
+      <p id="target-date-view">{{ feature.target_date }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <label for="area-view" class="col-md-2 col-form-label">Product Area</label>
+    <div class="col-md-10">
+      <p id="area-view">{{ feature.product_area }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{%block footer %}
+  <footer class="footer">
+    <p><a class="text-muted footer-link" href="{{ url_for('index') }}" role="button">Back</a></p>
+  </footer>
+{% endblock %}
