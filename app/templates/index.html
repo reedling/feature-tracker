@@ -30,10 +30,10 @@
 {% endwith %}
 <div class="row feature-board" id="feature-board">
   <div class="col-vs-12" data-bind="visible: !done()">
-    <h4 class="text-muted nothing">Loading...</h3>
+    <h4 class="text-muted nothing">Loading...</h4>
   </div>
   <div class="col-vs-12" data-bind="visible: done() && features().length === 0">
-    <h4 class="text-muted nothing">Nothing to display</h3>
+    <h4 class="text-muted nothing">Nothing to display</h4>
   </div>
   <!-- ko foreach: features -->
     <div class="col-sm-4 feature-board-item-container" data-bind="visible: done()">
